@@ -1,0 +1,17 @@
+<h1>Search</h1>
+<div class="row">
+	<div class="col-md-6">
+		<h3 class="non-items">検索結果</h3>
+		<div id="search-micropost-template">
+			<%= render 'search_micropost' %>
+		</div>
+	</div>
+
+	<div class="col-md-3 col-md-offset-3 search-form">
+		<%= form_tag(search_micropost_path, local: true) do %>
+			<label for="keyword">検索キーワード</label>
+			<%= text_field_tag :keyword %>
+			<%= submit_tag "検索" %>
+		<% end %>
+	</div>
+</div>

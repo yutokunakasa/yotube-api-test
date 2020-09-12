@@ -14,3 +14,22 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
+
+
+$(document).on('turbolinks:load', function() {
+	$('.player-trigger').on('click', function(event){
+		$(this).toggleClass('active');
+		$('#hidden-video-player').fadeToggle();
+		event.preventDefault();
+	});
+});
+
+$(document).on('turbolinks:load', function() {
+	$('.form-trigger').on('click', function(event){
+		$(this).toggleClass('active');
+		$('#hidden-form').fadeToggle();
+		event.preventDefault();
+	});
+});

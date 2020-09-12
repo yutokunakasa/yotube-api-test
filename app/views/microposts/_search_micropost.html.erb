@@ -1,0 +1,46 @@
+ <% @movies.each do |movie| %>
+    <li class="movies-item">
+        <ul>
+            <li><%=movie.snippet.title%></li>
+            <li><%=link_to image_tag(movie.snippet.thumbnails.medium.url)%></li>
+            
+            <div id= "hidden-video-player">
+				<h2>動画プレーヤー</h2>
+				<iframe width="800" height="451" src="https://www.youtube.com/embed/<%=movie.id.video_id%>" frameborder="0" allow="accelerometer; autoplay;encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<h3 class="player-trigger">閉じる</h3>
+		　　</div>
+
+		    <div id="player-open">
+		    	<div class="player-trigger">
+			    	<span>
+			    		<h3>
+					    	playerを開く
+					    </h3>
+				    </span>
+			    </div>
+		    </div>
+
+		    <div id="hidden-form">
+				<h3>動画登録</h3>
+				<%= form_for @movie, :url =>{controller:"movies", action: "create"} do |f| %>
+					<%= f.hidden_field :movie_url_id, value: movie.id.video_id %>
+					<%= f.hidden_field :title, value: movie.snippet.title %>
+					<%= f.text_area :introducer_comment, rows:'5', class: 'form-control', placeholder: "コメントをここに"%>
+					<%= f.submit "共有"%>
+				<% end %>
+			</div>
+
+			<div id="form-open">
+
+				<div class ="form-trigger">
+				    <span>
+				    	<h3>
+				    		共有する
+				    	</h3>
+				    </span>
+				</div>
+			</div>
+			
+        </ul>
+    </li>
+<% end %>

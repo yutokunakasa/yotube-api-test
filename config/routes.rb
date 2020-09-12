@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+	get 'input' => 'microposts#search'
+	root 'microposts#search'
+	get 'search_micropost' => 'microposts#search'
+	post 'search_micropost' => 'microposts#search'
+
+	resources :movies
 end
